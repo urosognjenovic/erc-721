@@ -11,7 +11,8 @@ contract BasicNFTTest is Test {
     BasicNFT private s_basicNFT;
     address private immutable i_alice = makeAddr("Alice");
     address private immutable i_bob = makeAddr("Bob");
-    string private constant TOKEN_URI = "";
+    string private constant TOKEN_URI =
+        "ipfs://QmU7ykwjmb8rid55BjJZLs5izit9kbrFvPHMf4CURfBsHd";
     uint256 private constant ALICE_BALANCE_AFTER_MINT = 1;
 
     function setUp() external {

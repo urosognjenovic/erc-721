@@ -7,7 +7,8 @@ import {DevOpsTools} from "foundry-devops/DevOpsTools.sol";
 import {BasicNFT} from "../src/BasicNFT.sol";
 
 contract MintBasicNFT is Script {
-    string private constant TOKEN_URI = "";
+    string private constant TOKEN_URI =
+        "ipfs://QmU7ykwjmb8rid55BjJZLs5izit9kbrFvPHMf4CURfBsHd";
 
     function run() external {
         address mostRecentDeployment = DevOpsTools.get_most_recent_deployment(
