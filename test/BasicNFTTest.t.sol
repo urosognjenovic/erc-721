@@ -28,7 +28,9 @@ contract BasicNFTTest is Test {
         vm.prank(i_alice);
         s_basicNFT.mintNFT(TOKEN_URI);
         assertEq(s_basicNFT.balanceOf(i_alice), ALICE_BALANCE_AFTER_MINT);
-        string memory tokenURI = s_basicNFT.tokenURI(ALICE_BALANCE_AFTER_MINT - 1);
+        string memory tokenURI = s_basicNFT.tokenURI(
+            ALICE_BALANCE_AFTER_MINT - 1
+        );
         assertEq(tokenURI, TOKEN_URI);
     }
 }
