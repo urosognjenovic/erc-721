@@ -16,6 +16,8 @@ contract DynamicNFT is ERC721 {
     string private s_secondSVGImageURI;
     mapping(uint256 => State) private s_tokenIDToState;
 
+    error NotTokenOwner();
+
     constructor(
         string memory name,
         string memory symbol,
@@ -30,6 +32,14 @@ contract DynamicNFT is ERC721 {
         _safeMint(msg.sender, s_tokenCounter);
         s_tokenIDToState[s_tokenCounter] = State.First;
         s_tokenCounter++;
+    }
+
+    function flipState(uint256 tokenID) external {
+        require(msg.sender == ownerOf(tokenID), NotTokenOwner());
+
+        s_tokenIDToState[tokenID] = s_tokenIDToState[tokenID] == State.First
+            ? State.Second
+            : State.First;
     }
 
     function tokenURI(
