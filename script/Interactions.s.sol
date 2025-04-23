@@ -8,7 +8,7 @@ import {BasicNFT} from "../src/BasicNFT.sol";
 
 contract MintBasicNFT is Script {
     string private constant TOKEN_URI =
-        "ipfs://QmU7ykwjmb8rid55BjJZLs5izit9kbrFvPHMf4CURfBsHd";
+        "https://yellow-raw-bear-827.mypinata.cloud/ipfs/bafkreihoixbxvitnwoto7cjipxiin2vsgg7fqypylldzlbzxetkji74pcu";
 
     function run() external {
         address mostRecentDeployment = DevOpsTools.get_most_recent_deployment(

@@ -18,3 +18,7 @@ deploy:
 deploy-and-verify:
 	@rpc_url="$$(make --no-print-directory get-rpc-url network=$(network))"; \
 	forge script script/DeployBasicNFT.s.sol:DeployBasicNFT --rpc-url "$$rpc_url" --account testAccount --verify --etherscan-api-key ${ETHERSCAN_API_KEY} --broadcast
+
+mint:
+	@rpc_url="$$(make --no-print-directory get-rpc-url network=$(network))"; \
+	forge script script/Interactions.s.sol:MintBasicNFT --rpc-url "$$rpc_url" --account testAccount --broadcast
