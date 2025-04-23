@@ -15,7 +15,7 @@ contract BasicNFT is ERC721 {
 
     function mintNFT(string memory newTokenURI) external {
         s_tokenIDToURI[s_tokenCounter] = newTokenURI;
-        _safeMint(msg.sender, s_tokenCounter, "");
+        _safeMint(msg.sender, s_tokenCounter);
         s_tokenCounter++;
     }
 
