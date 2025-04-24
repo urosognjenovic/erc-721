@@ -42,6 +42,10 @@ contract DynamicNFT is ERC721 {
             : State.First;
     }
 
+    function getTokenIDToState(uint256 tokenID) external view returns (State) {
+        return s_tokenIDToState[tokenID];
+    }
+
     function tokenURI(
         uint256 tokenID
     ) public view override returns (string memory) {
