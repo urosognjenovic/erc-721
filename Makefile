@@ -23,6 +23,22 @@ mint:
 	@rpc_url="$$(make --no-print-directory get-rpc-url network=$(network))"; \
 	forge script script/Interactions.s.sol:MintBasicNFT --rpc-url "$$rpc_url" --account testAccount --broadcast
 
+deploy-dynamic-nft:
+	@rpc_url="$$(make --no-print-directory get-rpc-url network=$(network))"; \
+	forge script script/DeployDynamicNFT.s.sol:DeployDynamicNFT --rpc-url "$$rpc_url" --account testAccount --broadcast
+
+deploy-and-verify-dynamic-nft:
+	@rpc_url="$$(make --no-print-directory get-rpc-url network=$(network))"; \
+	forge script script/DeployDynamicNFT.s.sol:DeployDynamicNFT --rpc-url "$$rpc_url" --account testAccount --verify --etherscan-api-key ${ETHERSCAN_API_KEY} --broadcast
+
+encode-and-deploy-dynamic-nft:
+	@rpc_url="$$(make --no-print-directory get-rpc-url network=$(network))"; \
+	forge script script/DeployDynamicNFT.s.sol:EncodeAndDeployDynamicNFT --rpc-url "$$rpc_url" --account testAccount --broadcast
+
+encode-deploy-and-verify-dynamic-nft:
+	@rpc_url="$$(make --no-print-directory get-rpc-url network=$(network))"; \
+	forge script script/DeployDynamicNFT.s.sol:EncodeAndDeployDynamicNFT --rpc-url "$$rpc_url" --account testAccount --verify --etherscan-api-key ${ETHERSCAN_API_KEY} --broadcast
+
 mint-dynamic-nft:
 	@rpc_url="$$(make --no-print-directory get-rpc-url network=$(network))"; \
 	forge script script/Interactions.s.sol:MintDynamicNFT --rpc-url "$$rpc_url" --account testAccount --broadcast

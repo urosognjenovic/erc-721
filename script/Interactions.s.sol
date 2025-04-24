@@ -46,6 +46,8 @@ contract FlipDynamicNFTState is Script {
     }
 
     function _flipState(address mostRecentDeployment, uint256 mostRecentTokenID) internal {
+        vm.startBroadcast();
         DynamicNFT(mostRecentDeployment).flipState(mostRecentTokenID);
+        vm.stopBroadcast();
     }
 }

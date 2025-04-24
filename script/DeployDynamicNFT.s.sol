@@ -34,19 +34,12 @@ contract EncodeAndDeployDynamicNFT is Script {
         string memory secondSVGBase64Encoded = convertSVGToImageURI(secondSVG);
 
         vm.startBroadcast();
-        s_dynamicNFT = new DynamicNFT(
-            NAME,
-            SYMBOL,
-            firstSVGBase64Encoded,
-            secondSVGBase64Encoded
-        );
+        s_dynamicNFT = new DynamicNFT(NAME, SYMBOL, firstSVGBase64Encoded, secondSVGBase64Encoded);
         vm.stopBroadcast();
         return s_dynamicNFT;
     }
 
-    function convertSVGToImageURI(
-        string memory svg
-    ) public pure returns (string memory) {
+    function convertSVGToImageURI(string memory svg) public pure returns (string memory) {
         string memory svgBase64Encoded = Base64.encode(bytes(svg));
         return string.concat(BASE_URI, svgBase64Encoded);
     }

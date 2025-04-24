@@ -37,9 +37,7 @@ contract DynamicNFT is ERC721 {
     function flipState(uint256 tokenID) external {
         require(msg.sender == ownerOf(tokenID), NotTokenOwner());
 
-        s_tokenIDToState[tokenID] = s_tokenIDToState[tokenID] == State.First
-            ? State.Second
-            : State.First;
+        s_tokenIDToState[tokenID] = s_tokenIDToState[tokenID] == State.First ? State.Second : State.First;
     }
 
     function getNumberOfTokens() external view returns (uint256) {
@@ -50,12 +48,8 @@ contract DynamicNFT is ERC721 {
         return s_tokenIDToState[tokenID];
     }
 
-    function tokenURI(
-        uint256 tokenID
-    ) public view override returns (string memory) {
-        string memory imageURI = s_tokenIDToState[tokenID] == State.First
-            ? s_firstSVGImageURI
-            : s_secondSVGImageURI;
+    function tokenURI(uint256 tokenID) public view override returns (string memory) {
+        string memory imageURI = s_tokenIDToState[tokenID] == State.First ? s_firstSVGImageURI : s_secondSVGImageURI;
 
         return
             string(

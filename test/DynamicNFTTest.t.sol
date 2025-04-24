@@ -52,14 +52,9 @@ contract EncodeAndDeployDynamicNFTTest is Test {
         s_dynamicNFT.flipState(FIRST_TOKEN_ID);
         vm.stopPrank();
         uint256 expectedStateUint256 = uint256(DynamicNFT.State.Second);
-        uint256 actualStateUint256 = uint256(
-            s_dynamicNFT.getTokenIDToState(FIRST_TOKEN_ID)
-        );
+        uint256 actualStateUint256 = uint256(s_dynamicNFT.getTokenIDToState(FIRST_TOKEN_ID));
 
         assertEq(actualStateUint256, expectedStateUint256);
-        assertEq(
-            s_dynamicNFT.tokenURI(FIRST_TOKEN_ID),
-            EXPECTED_TOKEN_URI_AFTER_FLIP
-        );
+        assertEq(s_dynamicNFT.tokenURI(FIRST_TOKEN_ID), EXPECTED_TOKEN_URI_AFTER_FLIP);
     }
 }
