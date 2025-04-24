@@ -22,3 +22,11 @@ deploy-and-verify:
 mint:
 	@rpc_url="$$(make --no-print-directory get-rpc-url network=$(network))"; \
 	forge script script/Interactions.s.sol:MintBasicNFT --rpc-url "$$rpc_url" --account testAccount --broadcast
+
+mint-dynamic-nft:
+	@rpc_url="$$(make --no-print-directory get-rpc-url network=$(network))"; \
+	forge script script/Interactions.s.sol:MintDynamicNFT --rpc-url "$$rpc_url" --account testAccount --broadcast
+
+flip-dynamic-nft-state:
+	@rpc_url="$$(make --no-print-directory get-rpc-url network=$(network))"; \
+	forge script script/Interactions.s.sol:FlipDynamicNFTState --rpc-url "$$rpc_url" --account testAccount --broadcast
