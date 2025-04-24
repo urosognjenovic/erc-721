@@ -2,7 +2,7 @@
 
 pragma solidity 0.8.28;
 
-import {Script} from "forge-std/Script.sol";
+import {Script, console} from "forge-std/Script.sol";
 import {DynamicNFT} from "../src/DynamicNFT.sol";
 import {Base64} from "@openzeppelin/contracts/utils/Base64.sol";
 
@@ -23,16 +23,31 @@ contract DeployDynamicNFT is Script {
 }
 
 contract EncodeAndDeployDynamicNFT is Script {
+    DynamicNFT private s_dynamicNFT;
+
     string constant BASE_URI = "data:image/svg+xml;base64,";
 
-    function run() external returns (DynamicNFT) {}
+    function run() external returns (DynamicNFT) {
+        string memory firstSVG = vm.readFile("./svg/firstImage.svg");
+        string memory secondSVG = vm.readFile("./svg/secondImage.svg");
+        string memory firstSVGBase64Encoded = convertSVGToImageURI(firstSVG);
+        string memory secondSVGBase64Encoded = convertSVGToImageURI(secondSVG);
+
+        vm.startBroadcast();
+        s_dynamicNFT = new DynamicNFT(
+            NAME,
+            SYMBOL,
+            firstSVGBase64Encoded,
+            secondSVGBase64Encoded
+        );
+        vm.stopBroadcast();
+        return s_dynamicNFT;
+    }
 
     function convertSVGToImageURI(
         string memory svg
     ) public pure returns (string memory) {
-        string memory svgBase64Encoded = Base64.encode(
-            bytes(svg)
-        );
+        string memory svgBase64Encoded = Base64.encode(bytes(svg));
         return string.concat(BASE_URI, svgBase64Encoded);
     }
 }
