@@ -28,33 +28,45 @@ The `MintBasicNFT` script uses a `tokenURI` stored on [Pinata](https://yellow-ra
 
 Clone the project:
 
-`git clone https://github.com/urosognjenovic/erc-721`
+```
+git clone https://github.com/urosognjenovic/erc-721
+```
 
 Copy the content of `.env.example` to `.env`:
 
-`cp -v .env.example .env`
+```
+cp -v .env.example .env
+```
 
 Replace the strings in `.env` with your environment variables (Etherscan API key and RPC URLs).
 
 Import a private key using `cast`. The `testAccount` account is used in Makefile. In case you don't want to use this name, make sure to adjust the Makefile targets.
 
-`cast wallet import testAccount --private-key YOUR_PRIVATE_KEY`
+```
+cast wallet import testAccount --private-key YOUR_PRIVATE_KEY
+```
 
 Build the project:
 
-`make build`
+```
+make build
+```
 
 ### Deploy and mint BasicNFT
 
 Deploy the `BasicNFT` contract to the Ethereum mainnet. View the list of supported networks in the Makefile `get-rpc-url` target.
 
-`make deploy network=ethereum-mainnet`
+```
+make deploy network=ethereum-mainnet
+```
 
 Run `make deploy-and-verify network=ethereum-mainnet` to verify the contract during the deployment.
 
 Mint a `BasicNFT`:
 
-`make mint network=ethereum-mainnet`
+```
+make mint network=ethereum-mainnet
+```
 
 ### Deploy and mint DynamicNFT
 
@@ -64,19 +76,27 @@ There are two scripts for deploying the `DynamicNFT` contract:
 
 Deploy the `DynamicNFT` contract to the Ethereum mainnet using the `DeployDynamicNFT` script.
 
-`make deploy-dynamic-nft network=ethereum-mainnet`
+```
+make deploy-dynamic-nft network=ethereum-mainnet
+```
 
 Deploy the `DynamicNFT` contract to the Ethereum mainnet using the `EncodeAndDeployDynamicNFT` script.
 
-`make encode-and-deploy-dynamic-nft network=ethereum-mainnet`
+```
+make encode-and-deploy-dynamic-nft network=ethereum-mainnet
+```
 
 Mint a `DynamicNFT`:
 
-`make mint-dynamic-nft network=ethereum-mainnet`
+```
+make mint-dynamic-nft network=ethereum-mainnet
+```
 
 To flip the state of the NFT:
 
-`make flip-dynamic-nft-state network=ethereum-mainnet`
+```
+make flip-dynamic-nft-state network=ethereum-mainnet
+```
 
 ## Upgrade ideas
 
