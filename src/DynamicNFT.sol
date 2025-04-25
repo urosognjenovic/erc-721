@@ -48,6 +48,10 @@ contract DynamicNFT is ERC721 {
         return s_tokenIDToState[tokenID];
     }
 
+    function getImageURIs() external view returns (string memory, string memory) {
+        return (s_firstSVGImageURI, s_secondSVGImageURI);
+    }
+
     function tokenURI(uint256 tokenID) public view override returns (string memory) {
         string memory imageURI = s_tokenIDToState[tokenID] == State.First ? s_firstSVGImageURI : s_secondSVGImageURI;
 
